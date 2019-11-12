@@ -1,0 +1,242 @@
+body {
+    margin: 0;
+    background-color: #2f3336;
+    color: #efefef;
+    font-size: 20px;
+    font-family: "Lato", sans-serif;
+}
+
+.top {
+    margin-bottom: 30px;
+}
+
+.top > * {
+    margin: 80px auto;
+}
+
+.face {
+    margin: 60px auto 40px;
+    height: 50vmin;
+    width: 50vmin;
+    border-radius: 50%;
+    display: block;
+}
+
+.name {
+    margin: 0 auto 50px;
+    text-align: center;
+    font-size: 48px;
+    line-height: 120%;
+    max-width: 70vmin;
+}
+
+.menu {
+    position: absolute;
+    background-color: #006565;
+    text-align: center;
+    font-size: 24px;
+    min-height: 38px;
+    width: 100%;
+    display: none;
+    border-top: solid 1px #006060;
+    border-bottom: solid 1px #006060;
+}
+
+.sticky {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin-top: 0;
+    z-index: 100;
+}
+
+.menu > ul {
+    list-style-type: none;
+}
+
+.menu > ul > li {
+    position: relative;
+    z-index: 100;
+    display: inline-block;
+    border-right: 1px dashed #efefef;
+    padding: 15px 40px;
+}
+
+.menu > ul > li:first-child {
+    border-left: 1px dashed #efefef;
+}
+
+a {
+    text-decoration: none;
+}
+
+.menu a {
+    color: #efefef;
+}
+
+.menu a:hover {
+    color: #60d0d0;
+}
+
+article {
+    padding: 20px;
+}
+
+article > * {
+    text-align: center;
+}
+
+article > .title {
+    font-size: 30px;
+    letter-spacing: 4px;
+    padding: 15px;
+    background-color: teal;
+    margin: 10px auto;
+    text-transform: uppercase;
+    border: solid 1px #006060;
+    max-width: 900px;
+}
+
+
+
+section {
+    padding: 10px 0 0;
+}
+
+article > section > .title {
+    font-size: 34px;
+    padding: 20px 0 30px;
+}
+section > .description {
+    text-align: justify;
+    padding-bottom: 20px;
+}
+
+section > img {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+article > section > footer {
+    margin: 0 auto;
+    padding: 0 0 20px;
+    border-bottom: dotted 10px teal;
+}
+
+article > section:last-child > footer {
+    border-bottom: none;
+}
+
+.about-me {
+    padding-top: 30px;
+    background-color: #191d21;
+}
+
+.interests {
+    background-color: #191d21;
+}
+
+.about-me > .description {
+    padding-bottom: 20px;
+    display: block;
+    float: left;
+}
+
+.about-me > .school {
+    width: 68%;
+    text-align: left;
+}
+
+.about-me > .work {
+    width: 30%;
+    text-align: right;
+}
+
+.about-me > .description > p {
+    margin: 10px 0;
+}
+
+.about-me > section {
+    border-bottom: none;
+}
+
+.about-me > .icon {
+    display: inline-block;
+    font-size: 80px;
+    color: teal;
+    width: 24%;
+    padding-bottom: 30px;
+}
+
+.about-me > .icon > a {
+    color: teal;
+}
+
+footer {
+    font-size: 18px;
+    text-align: center;
+    padding: 30px;
+}
+
+@media (min-width: 800px) {
+    .face {
+        width: 400px;
+        height: 400px;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .spacer {
+        height: 54px;
+    }
+
+    .about-me {
+        width: 740px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: calc(calc(100% - 740px) / 2);
+        padding-right: calc(calc(100% - 740px) / 2);
+    }
+
+    article > section > img {
+        display: inline-block;
+        padding-right: 10px;
+        vertical-align: middle;
+        width: calc(40% - 10px);
+        max-width: 300px;
+    }
+
+    article > section > .description {
+        display: inline-block;
+        padding-left: 10px;
+        vertical-align: middle;
+        width: calc(59% - 10px);
+        max-width: 700px;
+    }
+
+    article > section#space-invaders > img {
+        width: calc(40% - 10px);
+        max-width: 400px;
+    }
+
+    article > section#space-invaders > .description {
+        width: calc(59% - 10px);
+        max-width: 600px;
+    }
+
+    article > section#martial-arts > img {
+        width: calc(40% - 10px);
+        max-width: 400px;
+    }
+
+    article > section#martial-arts > .description {
+        width: calc(59% - 10px);
+        max-width: 600px;
+    }
+
+    article > section > footer {
+        max-width: 800px;
+    }
+}
