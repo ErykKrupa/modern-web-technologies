@@ -37,9 +37,9 @@ body {
     font-size: 24px;
     min-height: 38px;
     width: 100%;
-    display: none;
     border-top: solid 1px #006060;
     border-bottom: solid 1px #006060;
+    z-index: 100;
 }
 
 .sticky {
@@ -47,23 +47,30 @@ body {
     left: 0;
     top: 0;
     margin-top: 0;
-    z-index: 100;
+}
+
+.menu > #drop-down-menu {
+    position: relative;
+    display: inline-block;
+    padding: 22px;
 }
 
 .menu > ul {
+    display: none;
     list-style-type: none;
+    margin: 10px 0;
+    padding: 0 150px;
 }
 
 .menu > ul > li {
     position: relative;
-    z-index: 100;
-    display: inline-block;
-    border-right: 1px dashed #efefef;
-    padding: 15px 40px;
+    display: block;
+    border-top: 1px dashed #efefef;
+    padding: 20px 40px;
 }
 
 .menu > ul > li:first-child {
-    border-left: 1px dashed #efefef;
+    border-top: 0;
 }
 
 a {
@@ -76,6 +83,18 @@ a {
 
 .menu a:hover {
     color: #60d0d0;
+}
+
+.menu:hover > #drop-down-menu {
+    display: none;
+}
+
+.menu:hover > ul {
+    display: block;
+}
+
+.spacer {
+    height: 40px;
 }
 
 article {
@@ -97,8 +116,6 @@ article > .title {
     max-width: 900px;
 }
 
-
-
 section {
     padding: 10px 0 0;
 }
@@ -107,6 +124,7 @@ article > section > .title {
     font-size: 34px;
     padding: 20px 0 30px;
 }
+
 section > .description {
     text-align: justify;
     padding-bottom: 20px;
@@ -184,12 +202,25 @@ footer {
         height: 400px;
     }
 
-    .menu {
+    .menu > ul {
         display: block;
+        margin: 24px 0;
+        padding: 0;
     }
 
-    .spacer {
-        height: 54px;
+    .menu > ul > li {
+        display: inline-block;
+        border-right: 1px dashed #efefef;
+        padding: 15px 40px;
+        border-top: 0;
+    }
+
+    .menu > ul > li:first-child {
+        border-left: 1px dashed #efefef;
+    }
+
+    .menu > #drop-down-menu {
+        display: none;
     }
 
     .about-me {
@@ -198,6 +229,10 @@ footer {
         margin-right: auto;
         padding-left: calc(calc(100% - 740px) / 2);
         padding-right: calc(calc(100% - 740px) / 2);
+    }
+
+    .spacer {
+        height: 54px;
     }
 
     article > section > img {
