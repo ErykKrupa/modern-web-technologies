@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle</title>
+    <meta name="description" content="Puzzle"/>
+    <meta name="keywords"
+          content="puzzle"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="js/puzzle.js"></script>
+    <script src="js/loadImages.js"></script>
+</head>
+<body onload="loadImages();">
+<main>
+    <form method="get" action="puzzle.html">
+        <div id="gallery"></div>
+        <label>Columns: <input type="number" name="columns" min="2" max="30" value="3"></label>
+        <label>Rows: <input type="number" name="rows" min="2" max="30" value="3"></label>
+        <input type="submit" value="Run">
+    </form>
+</main>
+</body>
+</html>
