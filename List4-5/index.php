@@ -28,6 +28,60 @@
 </script>
 
 <main>
+    <?php
+    if(isset($_COOKIE["username"])) {
+        ?>
+
+
+        <section>
+            <h2>Witaj <?php echo $_COOKIE["username"]; ?></h2>
+            <button>
+            <a href="logout.php">Wyloguj się</a>
+            </button>
+        </section>
+
+        <?php
+    } else {
+        ?>
+        <section>
+            <h2>Zaloguj się</h2>
+            <form action="login.php" method="post">
+                <label for="username">Nazwa</label>
+                <input type="text" name="username" id="username">
+                <br>
+                <label for="password">Hasło</label>
+                <input type="password" name="password" id="password">
+                <br>
+                <input type="submit" value="Zaloguj się">
+            </form>
+        </section>
+        <section>
+            <h2>Zarejestruj się</h2>
+            <form action="register.php" method="post">
+                <label for="username">Nazwa</label>
+                <input type="text" name="username" id="username">
+                <br>
+                <label for="password">Hasło</label>
+                <input type="password" name="password" id="password">
+                <br>
+                <input type="submit" value="Zarejestruj się">
+            </form>
+        </section>
+        <?php
+    }
+
+    $db = new PDO('sqlite:./app.db');
+
+    // insert new comment
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_COOKIE["username"])) {
+        $content = $_POST["content"];
+        $author = $_COOKIE["username"];
+        $section = $_POST["section"];
+        $db->query("insert into comments (author, content, article) values (\"$author\" , \"$content\", \"$section\");");
+    }
+
+    ?>
+    <?php include('counter.php') ?>
     <header id="title">
         <h1>Zakamarki Kryptografii</h1>
     </header>
@@ -185,6 +239,30 @@ Otherwise reurn $s \cdot$JACOBI($n_1, a_1$)</pre>
             </ol>
             Algorytm działa w czasie $\mathcal{O}((\lg n)^2)$ operacji bitowych.
         </section>
+        <section>
+            <h2>Komentarze</h2>
+
+
+                <?php
+                // fetch comments
+                $result = $db->query("select * from comments where article=\"goldwasser\"");
+
+                foreach($result as $row) {
+                    echo "<p>" . $row['author'] . ": ". $row['content'] . "</p>";
+                }
+                ?>
+
+            <?php
+            if(isset($_COOKIE["username"])) {
+                ?>
+                <form action="" method="post">
+                    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                    <br>
+                    <input type="hidden" name="section" value="goldwasser">
+                    <input type="submit" value="Zamieść">
+                </form>
+            <?php } ?>
+        </section>
     </article>
     <article>
         <section id='shamir'>
@@ -239,7 +317,43 @@ Otherwise reurn $s \cdot$JACOBI($n_1, a_1$)</pre>
                 \mod p$$
             </p>
         </section>
+        <section>
+            <h2>Komentarze</h2>
+
+            <ul>
+
+                <?php
+                // fetch comments
+                $result = $db->query("select * from comments where article=\"shamir\"");
+
+
+                foreach($result as $row) {
+                    echo "<li>";
+                    echo "<p>" . $row['content'] . "</p>";
+                    echo "<small> ~ " . $row['author'] . "</small>";
+                    echo "</li>";
+                }
+                ?>
+            </ul>
+
+            <?php
+            if(isset($_COOKIE["username"])) {
+                ?>
+                <form action="" method="post">
+                    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                    <br>
+                    <input type="hidden" name="section" value="shamir">
+                    <input type="submit" value="Zamieść">
+                </form>
+            <?php } ?>
+        </section>
     </article>
+    <?php
+    $path = 'visits';
+    $file  = fopen( $path, 'r' );
+    $count = fgets( $file, 10000 );
+    echo "{$count} wizyt\n";
+    ?>
 </main>
 </body>
 </html>
